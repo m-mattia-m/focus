@@ -2,9 +2,6 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  modules: [
-    '@nuxt/ui'
-  ],
   css: ['~/assets/css/main.css'],
   app: {
     head: {
@@ -17,17 +14,27 @@ export default defineNuxtConfig({
       },
     }
   },
-  ui: {
-    // colorMode: false,
-    devtools: {
-      enabled: true
-    },
-  },
-  // vite: {
-  //   esbuild: {
-  //     drop: ["console"],
+  modules: [
+    '@vueuse/nuxt',
+    '@nuxtjs/tailwindcss'
+
+  ],
+  // postcss: {
+  //   plugins: {
+  //     tailwindcss: {},
+  //     autoprefixer: {},
   //   },
   // },
+  vite: {
+    server: {
+      fs: {
+        strict: false
+      },
+    },
+    esbuild: {
+      drop: ["console"],
+    },
+  },
   nitro: {
     // esbuild: {
     //   options: {
@@ -45,8 +52,8 @@ export default defineNuxtConfig({
     },
   },
   typescript: {
-      typeCheck: true,
-      strict: true
+    typeCheck: true,
+    strict: true
   },
   runtimeConfig: {
     spotifyAccessToken: ""

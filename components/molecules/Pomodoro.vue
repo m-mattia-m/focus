@@ -12,14 +12,15 @@
           @click="togglePause"
           class="w-8 h-8 p-1 transition duration-150 ease-in-out flex items-center justify-center rounded-full hover:bg-white/20 active:bg-white/30"
       >
-        <UIcon name="heroicons:pause-20-solid" />
+        <PauseIcon class="h-6 w-6"/>
       </button>
       <button
           v-if="isPaused"
           @click="togglePause"
           class="w-8 h-8 p-1 transition duration-150 ease-in-out flex items-center justify-center rounded-full hover:bg-white/20 active:bg-white/30"
       >
-        <UIcon name="heroicons:play-20-solid" />
+<!--        <UIcon name="heroicons:play-20-solid" />-->
+        <PlayIcon class="h-6 w-6"/>
       </button>
       <p class="text-xl ml-2">{{ sessionType }}</p>
     </div>
@@ -29,6 +30,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
 import { useDraggable } from '@vueuse/core';
+import { PauseIcon, PlayIcon } from '@heroicons/vue/24/solid'
 
 const props = defineProps({
   workDuration: {

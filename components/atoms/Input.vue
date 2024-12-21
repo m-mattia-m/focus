@@ -1,5 +1,7 @@
 <script setup lang="ts">
 
+import {PlusIcon, MinusIcon} from "@heroicons/vue/24/solid";
+
 const props = defineProps({
   name: {
     type: String,
@@ -35,7 +37,8 @@ function toCamelCase(input: string): string {
     <div class="flex flex-row">
       <button @click="value -= 1; $emit('value', value)"
           class="rounded border-1 border-white flex justify-center items-center w-8 h-8 mr-1 text-white hover:bg-white/20 active:bg-white/40">
-        <UIcon name="heroicons:minus-20-solid" class="flex justify-center items-center"/>
+<!--        <UIcon name="heroicons:minus-20-solid" class="flex justify-center items-center"/>-->
+        <MinusIcon class="h-6 w-6 flex justify-center items-center"/>
       </button>
       <input :name="toCamelCase(props.name)"
              @change="$emit('value', value)"
@@ -45,18 +48,19 @@ function toCamelCase(input: string): string {
       />
       <button @click="value += 1; $emit('value', value)"
               class="rounded border-1 border-white flex justify-center items-center w-8 h-8 ml-1 text-white hover:bg-white/20 active:bg-white/40">
-        <UIcon name="heroicons:plus-20-solid" class="flex justify-center items-center"/>
+<!--        <UIcon name="heroicons:plus-20-solid" class="flex justify-center items-center"/>-->
+        <PlusIcon class="h-6 w-6 flex justify-center items-center"/>
       </button>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-@layer base {
-  input[type="number"]::-webkit-inner-spin-button,
-  input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-}
+//@layer base {
+//  input[type="number"]::-webkit-inner-spin-button,
+//  input[type="number"]::-webkit-outer-spin-button {
+//    -webkit-appearance: none;
+//    margin: 0;
+//  }
+//}
 </style>

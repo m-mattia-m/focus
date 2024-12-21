@@ -17,19 +17,23 @@
           <div class="flex justify-center items-center pt-1">
             <button
                 class="transition duration-150 ease-in-out flex items-center justify-center rounded-full hover:bg-white/20 active:bg-white/30 p-1.5">
-              <UIcon @click="remain" name="heroicons:backward-20-solid" />
+<!--              <UIcon @click="remain" name="heroicons:backward-20-solid" />-->
+              <BackwardIcon @click="skip" class="h-6 w-6" />
             </button>
             <button  v-if="!isPlayingMusic" @click="play"
                 class="transition duration-150 ease-in-out flex items-center justify-center rounded-full hover:bg-white/20 active:bg-white/30 p-1.5 my-0.5">
-              <UIcon name="heroicons:play-20-solid" />
+<!--              <UIcon name="heroicons:play-20-solid" />-->
+              <PlayIcon @click="skip" class="h-6 w-6" />
             </button>
             <button v-if="isPlayingMusic" @click="pause"
                 class="transition duration-150 ease-in-out flex items-center justify-center rounded-full hover:bg-white/20 active:bg-white/30 p-1.5 my-0.5">
-              <UIcon name="heroicons:pause-20-solid" />
+<!--              <UIcon name="heroicons:pause-20-solid" />-->
+              <PauseIcon @click="skip" class="h-6 w-6" />
             </button>
             <button
                 class="transition duration-150 ease-in-out flex items-center justify-center rounded-full hover:bg-white/20 active:bg-white/30 p-1.5">
-              <UIcon @click="skip" name="heroicons:forward-20-solid" />
+<!--              <UIcon @click="skip" name="heroicons:forward-20-solid" />-->
+              <ForwardIcon @click="skip" class="h-6 w-6" />
             </button>
           </div>
         </div>
@@ -41,6 +45,7 @@
 <script setup lang="ts">
 import { useDraggable } from '@vueuse/core'
 import { ref } from 'vue'
+import {ForwardIcon, PauseIcon, PlayIcon, BackwardIcon} from "@heroicons/vue/24/solid";
 
 const el = ref<HTMLElement | null>(null)
 const { x, y, style } = useDraggable(el, {

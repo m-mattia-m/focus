@@ -3,6 +3,7 @@ import Switch from "~/components/atoms/Switch.vue";
 import Layout from "~/components/organisms/Layout.vue";
 import Input from "~/components/atoms/Input.vue";
 import Carousel from "~/components/atoms/Carousel.vue";
+import {AdjustmentsHorizontalIcon} from '@heroicons/vue/24/solid'
 
 const isSettingsDialogOpen = ref(false)
 const isMetaKeyPressed = ref(false)
@@ -78,7 +79,8 @@ function registerKeyboardEventListener(): void {
           @click="isSettingsDialogOpen = !isSettingsDialogOpen"
           class="w-10 h-10 flex justify-center items-center rounded hover:bg-white/20 hover:text-secondary text-2xl text-white border-white outline-none focus:outline-none active:outline-none"
       >
-        <UIcon name="heroicons:adjustments-horizontal-20-solid"/>
+<!--        <UIcon name="heroicons:adjustments-horizontal-20-solid"/>-->
+        <AdjustmentsHorizontalIcon class="h-6 w-6"/>
       </button>
     </div>
     <div v-show="isSettingsDialogOpen" class="absolute top-3 right-3 ease-in-out duration-300 bg-black/60 p-4 rounded">
@@ -95,9 +97,9 @@ function registerKeyboardEventListener(): void {
       </button>
       <button class="flex flex-row justify-between items-center mt-3 cursor-pointer"
               @click="$emit('showIcons', true)">
-        <UKbd class="font-bold" variant="subtle">&#8984;</UKbd>
+<!--        <UKbd class="font-bold" variant="subtle">&#8984;</UKbd>-->
         <span class="text-white mx-1">+</span>
-        <UKbd class="font-bold" variant="subtle">V</UKbd>
+<!--        <UKbd class="font-bold" variant="subtle">V</UKbd>-->
         <span class="text-white ml-4">Show icons</span>
       </button>
       <hr class="text-white/30 my-4">
