@@ -5,7 +5,7 @@
       class="fixed p-3 rounded-3xl flex flex-col justify-center text-4xl text-center text-white w-44"
       :class="{ 'bg-black/30 ' : props.showBackground }"
   >
-    <p>{{ formattedTime }}</p>
+    <p class="font-mono text-3xl">{{ formattedTime }}</p>
   </div>
 </template>
 

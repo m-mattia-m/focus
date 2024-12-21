@@ -1,6 +1,6 @@
 <template>
   <div ref="screen" class="h-full w-full absolute">
-    <GradientBackground>
+    <Background :kind="background">
       <MusicSleeve
           v-if="showMusicSleeve"
           :show-background="showBackground"
@@ -19,7 +19,8 @@
       />
 <!--      <p class="text-black">asdf</p>-->
       <Settings
-          v-show="showIcons"
+          :show-icon="showIcons"
+          @showIcons="(value) => showIcons = value"
           :show-clock="showClock"
           @show-clock="(value) => showClock = value"
           :show-pomodoro="showPomodoro"
@@ -30,15 +31,15 @@
           @show-gadgets-background="(value) => showBackground = value"
           :show-seconds="showSeconds"
           @showSeconds="(value) => showSeconds = value"
-          :show-icons="showIcons"
-          @showIcons="(value) => showIcons = value"
           :pomodoro-work-duration="pomodoroWorkDuration"
           @pomodoro-work-duration="(value) => pomodoroWorkDuration = value"
           :pomodoro-break-duration="pomodoroBreakDuration"
           @pomodoro-break-duration="(value) => pomodoroBreakDuration = value"
+          @background="(value) => background = value"
+          @fullscreen="(value) => fullscreen = value"
       />
-      <Fullscreen v-show="showIcons"/>
-    </GradientBackground>
+      <Fullscreen :fullscreen="fullscreen" :show-icon="showIcons"/>
+    </Background>
   </div>
 </template>
 
@@ -46,20 +47,22 @@
 </style>
 
 <script lang="ts" setup>
-import GradientBackground from "~/components/molecules/GradientBackground.vue";
+import Background from "~/components/molecules/Background.vue";
 import MusicSleeve from "~/components/organisms/MusicSleeve.vue";
 import Clock from "~/components/molecules/Clock.vue";
 import Settings from "~/components/organisms/Settings.vue";
 import Pomodoro from "~/components/molecules/Pomodoro.vue";
 import Fullscreen from "~/components/molecules/Fullscreen.vue";
 
-const showClock = ref(true)
+const fullscreen = ref(false)
+const showClock = ref(false)
 const showPomodoro = ref(false)
-const showMusicSleeve = ref(true)
+const showMusicSleeve = ref(false)
 const showSeconds = ref(false)
-const showBackground = ref(true)
+const showBackground = ref(false)
 const showIcons = ref(true)
 const pomodoroWorkDuration = ref(30)
 const pomodoroBreakDuration = ref(5)
+const background: Ref<"gradient" | "city" | "landscape" | "blank" | "color"> = ref("gradient")
 
 </script>

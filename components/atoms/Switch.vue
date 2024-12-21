@@ -25,7 +25,7 @@ function updateValue(): void {
     <p class="text-white pr-6">{{ prop.title }}</p>
     <button
         @click="updateValue()"
-        class="border-1 border-white rounded-full h-7 w-12 flex items-center"
+        class="border-[1px] border-white rounded-full h-7 w-12 flex items-center"
         :class="[isActive ? 'justify-end' : 'justify-start']"
     >
       <span

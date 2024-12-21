@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import {PlusIcon, MinusIcon} from "@heroicons/vue/24/solid";
+import {MinusIcon, PlusIcon} from "@heroicons/vue/24/solid";
 
 const props = defineProps({
   name: {
@@ -36,8 +36,8 @@ function toCamelCase(input: string): string {
     <label :for="toCamelCase(props.name)" class="text-white mb-1">{{ props.name }}</label>
     <div class="flex flex-row">
       <button @click="value -= 1; $emit('value', value)"
-          class="rounded border-1 border-white flex justify-center items-center w-8 h-8 mr-1 text-white hover:bg-white/20 active:bg-white/40">
-<!--        <UIcon name="heroicons:minus-20-solid" class="flex justify-center items-center"/>-->
+              class="rounded border-1 border-white flex justify-center items-center w-8 h-8 mr-1 text-white hover:bg-white/20 active:bg-white/40">
+        <!--        <UIcon name="heroicons:minus-20-solid" class="flex justify-center items-center"/>-->
         <MinusIcon class="h-6 w-6 flex justify-center items-center"/>
       </button>
       <input :name="toCamelCase(props.name)"
@@ -48,7 +48,7 @@ function toCamelCase(input: string): string {
       />
       <button @click="value += 1; $emit('value', value)"
               class="rounded border-1 border-white flex justify-center items-center w-8 h-8 ml-1 text-white hover:bg-white/20 active:bg-white/40">
-<!--        <UIcon name="heroicons:plus-20-solid" class="flex justify-center items-center"/>-->
+        <!--        <UIcon name="heroicons:plus-20-solid" class="flex justify-center items-center"/>-->
         <PlusIcon class="h-6 w-6 flex justify-center items-center"/>
       </button>
     </div>
@@ -56,11 +56,9 @@ function toCamelCase(input: string): string {
 </template>
 
 <style scoped lang="scss">
-//@layer base {
-//  input[type="number"]::-webkit-inner-spin-button,
-//  input[type="number"]::-webkit-outer-spin-button {
-//    -webkit-appearance: none;
-//    margin: 0;
-//  }
-//}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 </style>

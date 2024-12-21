@@ -4,9 +4,10 @@ import Layout from "~/components/organisms/Layout.vue";
 import Input from "~/components/atoms/Input.vue";
 import Carousel from "~/components/atoms/Carousel.vue";
 import {AdjustmentsHorizontalIcon} from '@heroicons/vue/24/solid'
+import Kbd from "~/components/atoms/Kbd.vue";
+// import { onMounted } from 'vue'
 
 const isSettingsDialogOpen = ref(false)
-const isMetaKeyPressed = ref(false)
 const props = defineProps({
   showClock: {
     type: Boolean,
@@ -31,8 +32,15 @@ const props = defineProps({
   },
   pomodoroBreakDuration: {
     type: Number,
+  },
+  showIcon: {
+    type: Boolean,
+    default: true,
   }
 })
+
+const showIcons = ref(true)
+const fullscreen = ref(false)
 
 const emits = defineEmits<{
   (e: 'showClock', value: boolean): void
@@ -43,6 +51,8 @@ const emits = defineEmits<{
   (e: 'showIcons', value: boolean): void
   (e: 'pomodoroWorkDuration', value: number): void
   (e: 'pomodoroBreakDuration', value: number): void
+  (e: 'background', value: "gradient" | "city" | "landscape" | "blank" | "color"): void
+  (e: 'fullscreen', value: boolean): void
 }>()
 
 onMounted(() => {
@@ -51,56 +61,54 @@ onMounted(() => {
 
 function registerKeyboardEventListener(): void {
   document.addEventListener('keyup', (event: KeyboardEvent) => {
-    if (event.key.toLowerCase() === 'escape') isSettingsDialogOpen.value = false;
-    if (event.key.toLowerCase() === 'meta') isMetaKeyPressed.value = true;
-
-    console.log("event listener")
-    console.log(isMetaKeyPressed.value)
-    console.log(event.key)
-    console.log(event)
-
-    if ((event.ctrlKey || event.metaKey || isMetaKeyPressed.value) && event.key === "x") {
-      event.preventDefault();
-      isSettingsDialogOpen.value = !isSettingsDialogOpen.value;
-    }
-    if ((event.ctrlKey || event.metaKey || isMetaKeyPressed.value) && event.key === "v") {
-      event.preventDefault();
-      emits('showIcons', true)
-    }
+    if (event.key === "Escape") isSettingsDialogOpen.value = false;
+    if (event.key === "o") isSettingsDialogOpen.value = true;
+    if (event.key === "i") toggleIcons();
+    if (event.key === "f") toggleFullscreen();
   });
+}
+
+function toggleIcons(): void {
+  showIcons.value = !showIcons.value
+  emits('showIcons', showIcons.value)
+}
+
+function toggleFullscreen(): void {
+  fullscreen.value = !fullscreen.value
+  emits('fullscreen', fullscreen.value)
 }
 
 </script>
 
 <template>
   <div>
-    <div class="absolute bottom-1 right-1">
+    <div v-show="showIcon" class="absolute bottom-1 right-1">
       <button
           @click="isSettingsDialogOpen = !isSettingsDialogOpen"
           class="w-10 h-10 flex justify-center items-center rounded hover:bg-white/20 hover:text-secondary text-2xl text-white border-white outline-none focus:outline-none active:outline-none"
       >
-<!--        <UIcon name="heroicons:adjustments-horizontal-20-solid"/>-->
         <AdjustmentsHorizontalIcon class="h-6 w-6"/>
       </button>
     </div>
     <div v-show="isSettingsDialogOpen" class="absolute top-3 right-3 ease-in-out duration-300 bg-black/60 p-4 rounded">
       <button class="flex flex-row justify-between items-center cursor-pointer" @click="isSettingsDialogOpen = false">
-        <UKbd class="font-bold" variant="subtle">ESC</UKbd>
+        <Kbd value="ESC"/>
         <span class="text-white ml-4">Close settings</span>
       </button>
       <button class="flex flex-row justify-between items-center mt-3 cursor-pointer"
               @click="isSettingsDialogOpen = true">
-        <UKbd class="font-bold" variant="subtle">&#8984;</UKbd>
-        <span class="text-white mx-1">+</span>
-        <UKbd class="font-bold" variant="subtle">X</UKbd>
+        <Kbd value="O"/>
         <span class="text-white ml-4">Show settings</span>
       </button>
       <button class="flex flex-row justify-between items-center mt-3 cursor-pointer"
-              @click="$emit('showIcons', true)">
-<!--        <UKbd class="font-bold" variant="subtle">&#8984;</UKbd>-->
-        <span class="text-white mx-1">+</span>
-<!--        <UKbd class="font-bold" variant="subtle">V</UKbd>-->
-        <span class="text-white ml-4">Show icons</span>
+              @click="toggleIcons()">
+        <Kbd value="I"/>
+        <span class="text-white ml-4">Toggle icons</span>
+      </button>
+      <button class="flex flex-row justify-between items-center mt-3 cursor-pointer"
+              @click="toggleFullscreen()">
+        <Kbd value="F"/>
+        <span class="text-white ml-4">Toggle fullscreen</span>
       </button>
       <hr class="text-white/30 my-4">
       <Switch
@@ -132,16 +140,10 @@ function registerKeyboardEventListener(): void {
           class="pt-3"
           title="Background"
       />
-      <Switch
-          @value="(value: boolean) => $emit('showIcons', value)"
-          :value="props.showIcons"
-          class="pt-3"
-          title="Icons"
-      />
       <hr class="text-white/30 my-4">
-      <Layout/>
+<!--      <Layout/>-->
       <hr class="text-white/30 my-4">
-      <Carousel/>
+      <Carousel @background="(value: string) => $emit('background', value)" />
       <hr class="text-white/30 my-4">
       <Input
           :value="pomodoroWorkDuration"

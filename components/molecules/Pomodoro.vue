@@ -2,7 +2,7 @@
   <div
       ref="el"
       :style="style"
-      class="fixed p-3 rounded-3xl flex flex-col justify-center text-4xl text-white text-center"
+      class="fixed p-3 rounded-3xl flex flex-col justify-center text-3xl text-white text-center font-mono"
       :class="{ 'bg-black/30': props.showBackground }"
   >
     <p>{{ formattedTime }}</p>

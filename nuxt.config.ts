@@ -31,9 +31,9 @@ export default defineNuxtConfig({
         strict: false
       },
     },
-    esbuild: {
-      drop: ["console"],
-    },
+    // esbuild: {
+    //   drop: ["console"],
+    // },
   },
   nitro: {
     // esbuild: {
