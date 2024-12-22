@@ -1,0 +1,7 @@
+services:
+  focus:
+    container_name: focus
+    image: ghcr.io/m-mattia-m/focus:0.0.1-rc1
+    restart: unless-stopped
+    ports:
+      - 8080:3000

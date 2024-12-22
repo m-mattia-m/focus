@@ -1,75 +1,23 @@
-# Nuxt Minimal Starter
+# Focus
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Focus is a site which should help you to stay focused. 🧘
+
+## Features
+
+All features are optional, you can deactivate everything during runtime.
+
+- Different background: blank, gradient, one color, city-videos, landscape-videos
+- Pomodoro
+- Clock
+- Simple Spotify controller
+- Fullscreen
+- Keyboard shortcuts
+- 
 
 ## Setup
 
-Make sure to install dependencies:
+It is recommended to use Docker for the setup. Please consider this example.
 
-```bash
-# npm
-npm install
+[See all versions](https://github.com/m-mattia-m/focus/pkgs/container/focus/versions)
 
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+[Example docker compose](https://github.com/m-mattia-m/focus/blob/main/docker-compose.yaml)
