@@ -12,7 +12,6 @@ All features are optional, you can deactivate everything during runtime.
 - Simple Spotify controller
 - Fullscreen
 - Keyboard shortcuts
-- 
 
 ## Setup
 
