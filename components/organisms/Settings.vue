@@ -61,7 +61,7 @@ onMounted(() => {
 
 function registerKeyboardEventListener(): void {
   document.addEventListener('keyup', (event: KeyboardEvent) => {
-    if (event.key === "Escape") isSettingsDialogOpen.value = false;
+    if (event.key === "c") isSettingsDialogOpen.value = false;
     if (event.key === "o") isSettingsDialogOpen.value = true;
     if (event.key === "i") toggleIcons();
     if (event.key === "f") toggleFullscreen();
@@ -92,7 +92,7 @@ function toggleFullscreen(): void {
     </div>
     <div v-show="isSettingsDialogOpen" class="absolute top-3 right-3 ease-in-out duration-300 bg-black/60 p-4 rounded">
       <button class="flex flex-row justify-between items-center cursor-pointer" @click="isSettingsDialogOpen = false">
-        <Kbd value="ESC"/>
+        <Kbd value="C"/>
         <span class="text-white ml-4">Close settings</span>
       </button>
       <button class="flex flex-row justify-between items-center mt-3 cursor-pointer"
