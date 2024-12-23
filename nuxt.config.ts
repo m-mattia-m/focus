@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
-  devtools: { enabled: true },
+  devtools: {enabled: true},
   css: ['~/assets/css/main.css'],
   app: {
     head: {
@@ -17,7 +17,6 @@ export default defineNuxtConfig({
   modules: [
     '@vueuse/nuxt',
     '@nuxtjs/tailwindcss'
-
   ],
   // postcss: {
   //   plugins: {
@@ -36,11 +35,9 @@ export default defineNuxtConfig({
     // },
   },
   nitro: {
-    // esbuild: {
-    //   options: {
-    //     drop: ["console"],
-    //   },
-    // },
+    plugins: [
+      '~/server/plugins/database.ts'
+    ],
     experimental: {
       database: true
     },
@@ -56,7 +53,8 @@ export default defineNuxtConfig({
     strict: true
   },
   runtimeConfig: {
-    spotifyAccessToken: ""
+    spotifyClientId: "",
+    spotifyClientSecret: "",
   },
   future: {
     compatibilityVersion: 4,

@@ -2,7 +2,7 @@ import {useDatabase} from "nitropack/runtime";
 import {type UserRequest, type UserResponse} from "~/server/types/user";
 import {hashSync} from 'bcrypt';
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async (event): Promise<UserResponse> => {
   const userBody: UserRequest = await readBody(event) as UserRequest
 
   const db = useDatabase()
