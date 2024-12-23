@@ -1,4 +1,4 @@
-import {useDatabase} from "nitropack/runtime";
+import { useDatabase } from "nitropack/runtime";
 import {type UserRequest, type UserResponse} from "~/server/types/user";
 import {hashSync} from 'bcrypt';
 

@@ -1,7 +1,7 @@
 import {useDatabase} from "nitropack/runtime";
 import {type UserResponse} from "~/server/types/user";
 
-const config = useRuntimeConfig()
+// const config = useRuntimeConfig()
 
 export default defineEventHandler(async (event) => {
   const userId: string = event.context.params?.id as string

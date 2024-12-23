@@ -1,6 +1,6 @@
 import {useDatabase} from "nitropack/runtime";
 
-const config = useRuntimeConfig()
+// const config = useRuntimeConfig()
 
 export default defineEventHandler(async (event) => {
 

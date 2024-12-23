@@ -1,5 +1,44 @@
-import {useDatabase} from "nitropack/runtime";
-import {createDatabase} from "db0";
+// import {useDatabase} from "nitropack/runtime";
+import {drizzle} from "drizzle-orm/libsql";
+import {migrate} from "drizzle-orm/libsql/migrator";
+
+
+export default defineNitroPlugin(async (nitroApp) => {
+  // useDatabase()
+  // const db = createDatabase();
+
+  console.log("here in database.ts to create tables")
+
+  const temp = drizzle(useDatabase());
+
+  const temp2 = migrate(temp, {migrationsFolder: "server/database/migrations"})
+
+  console.log(temp2)
+
+
+  // await drizzle(useDatabase(), {migrationsFolder: "server/database/migrations"})
+  //   .then(() => {
+  //     console.log("Database migrations complete.");
+  //   })
+  //   .catch((error) => {
+  //     console.error("Database migrations failed:", error);
+  //   });
+
+
+  // const db = createDatabase(useDatabase());
+  //
+  // // Use simple db0 API to make queries
+  // await db.sql`create table if not exists test (
+  //   id integer primary key autoincrement,
+  //   full_name text
+  // )`;
+
+  // And then leverage drizzle typed API to make more advanced ones
+  //   const drizzleDb = drizzle(db);
+  //   await drizzleDb.select().from(users).all();
+
+
+})
 
 // const config = useRuntimeConfig();
 // export default async () => {
