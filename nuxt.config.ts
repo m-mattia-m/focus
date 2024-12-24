@@ -18,12 +18,6 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxtjs/tailwindcss'
   ],
-  // postcss: {
-  //   plugins: {
-  //     tailwindcss: {},
-  //     autoprefixer: {},
-  //   },
-  // },
   vite: {
     server: {
       fs: {
@@ -34,20 +28,7 @@ export default defineNuxtConfig({
     //   drop: ["console"],
     // },
   },
-  nitro: {
-    plugins: [
-      '~/server/plugins/database.ts'
-    ],
-    experimental: {
-      database: true
-    },
-    database: {
-      default: {
-        connector: 'sqlite',
-        options: {name: 'db'}
-      },
-    },
-  },
+  nitro: {},
   typescript: {
     typeCheck: true,
     strict: true
