@@ -1,14 +1,17 @@
-import {useDatabase} from "nitropack/runtime";
 import {type UserResponse} from "~/server/types/user";
-
-// const config = useRuntimeConfig()
+import { PrismaClient } from '@prisma/client';
 
 export default defineEventHandler(async (event) => {
-  const id: string = event.context.params?.id as string
+  const userId: string = event.context.params?.id as string
+  const prisma = new PrismaClient({
 
-  // console.log(config.spotifyAccessToken)
+  });
 
-  // const response = await db.sql`SELECT * FROM credential  WHERE id = ${id};`
+  const user = await prisma.user.findFirst({
+    where: {
+      id: userId
+    }
+  })
 
-  return {}
+  return user as unknown as UserResponse
 })

@@ -16,8 +16,12 @@ export default defineNuxtConfig({
   },
   modules: [
     '@vueuse/nuxt',
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    '@prisma/nuxt',
   ],
+  prisma: {
+    autoSetupPrisma: true,
+  },
   vite: {
     server: {
       fs: {
@@ -34,8 +38,12 @@ export default defineNuxtConfig({
     strict: true
   },
   runtimeConfig: {
-    spotifyClientId: "",
     spotifyClientSecret: "",
+    jwtSecretCert: "",
+    public: {
+      spotifyClientId: "",
+      host: "",
+    }
   },
   future: {
     compatibilityVersion: 4,

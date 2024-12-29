@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import Switch from "~/components/atoms/Switch.vue";
 import Layout from "~/components/organisms/Layout.vue";
-import Input from "~/components/atoms/Input.vue";
+import NumberInput from "~/components/atoms/NumberInput.vue";
 import Carousel from "~/components/atoms/Carousel.vue";
-import {AdjustmentsHorizontalIcon} from '@heroicons/vue/24/solid'
+import {AdjustmentsHorizontalIcon, Cog6ToothIcon} from '@heroicons/vue/24/solid'
 import Kbd from "~/components/atoms/Kbd.vue";
-// import { onMounted } from 'vue'
 
 const isSettingsDialogOpen = ref(false)
 const props = defineProps({
@@ -145,17 +144,23 @@ function toggleFullscreen(): void {
       <hr class="text-white/30 my-4">
       <Carousel @background="(value: string) => $emit('background', value)" />
       <hr class="text-white/30 my-4">
-      <Input
+      <NumberInput
           :value="pomodoroWorkDuration"
           @value="(value) => $emit('pomodoroWorkDuration', value)"
           name="Work duration"
       />
-      <Input
+      <NumberInput
           class="mt-3"
           :value="pomodoroBreakDuration"
           @value="(value) => $emit('pomodoroBreakDuration', value)"
           name="Break duration"
       />
+      <hr class="text-white/30 my-4">
+      <a href="/settings" class="text-white flex flex-row items-center group">
+        <Cog6ToothIcon class="h-5 w-5 mr-2 transition ease-in-out duration-300 group-hover:rotate-45"/>
+        <span>Settings</span>
+        <span class="ml-2 group-hover:translate-x-1 transition">&#8594;</span>
+      </a>
     </div>
 
   </div>

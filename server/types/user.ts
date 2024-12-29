@@ -1,9 +1,10 @@
 export interface UserRequest {
   email: string
   password: string
+  passwordVerify: string
 }
 
 export interface UserResponse {
   id: string
-  password: string
+  email: string
 }
